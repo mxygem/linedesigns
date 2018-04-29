@@ -17,7 +17,7 @@ func New(lineWidth float64, imageWidth, imageHeight int) *Design {
 	return &Design{LineWidth: lineWidth, ImageWidth: imageWidth, ImageHeight: imageHeight, P: pinhole.New()}
 }
 
-// LineDotted creates a line segment and outputs only its points as dots.
+// LineDotted creates a dotted line segment
 func (d *Design) LineDotted(x1, y1, x2, y2, count float64) {
 	d.drawDots(d.dottedLine(x1, y1, x2, y2, count))
 }
@@ -35,7 +35,7 @@ func (d *Design) Rectangle(x1, y1, x2, y2, x3, y3, x4, y4, count float64) {
 	d.connectDots(top, left)
 }
 
-// RectangleDotted creates a rectangle and outputs only its points as dots.
+// RectangleDotted creates a dotted rectangle
 func (d *Design) RectangleDotted(x1, y1, x2, y2, x3, y3, x4, y4, count float64) {
 	dots := [][]float64{}
 	dots = append(dots, d.dottedLine(x1, y1, x2, y2, count)...)
@@ -57,7 +57,7 @@ func (d *Design) Triangle(x1, y1, x2, y2, x3, y3, count float64) {
 	d.connectDots(l3, l1)
 }
 
-// TriangleDotted creates a lined triangle
+// TriangleDotted creates a dotted triangle
 func (d *Design) TriangleDotted(x1, y1, x2, y2, x3, y3, count float64) {
 	dots := [][]float64{}
 	dots = append(dots, d.dottedLine(x1, y1, x2, y2, count)...)
