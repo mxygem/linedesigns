@@ -22,4 +22,8 @@ func (d *Design) connectDots(c1, c2 [][]float64) {
 	}
 }
 
-func (d *Design) drawDots(dots [][]float64) {}
+func (d *Design) drawDots(dots [][]float64) {
+	for _, pos := range dots {
+		d.P.DrawDot(pos[0], pos[1], 0, 0.02)
+	}
+}
