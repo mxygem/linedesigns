@@ -1,11 +1,5 @@
 package lines
 
-import (
-	"fmt"
-
-	"github.com/tidwall/pinhole"
-)
-
 func (d *Design) dottedLine(x1, y1, x2, y2, count float64) [][]float64 {
 	points := [][]float64{}
 	i := 0.0
@@ -19,14 +13,13 @@ func (d *Design) dottedLine(x1, y1, x2, y2, count float64) [][]float64 {
 	return points
 }
 
-func (d *Design) connectDots(c1, c2 [][]float64, p *pinhole.Pinhole) {
-	fmt.Println(c1)
-	fmt.Println(c2)
+func (d *Design) connectDots(c1, c2 [][]float64) {
 	for i, c1p := range c1 {
-		fmt.Printf("i %d x: %.2f y: %.2f\n", i, c1p[0], c1p[1])
 		if i < len(c2)-1 {
 			c2p := c2[i+1]
-			p.DrawLine(c1p[0], c1p[1], 0, c2p[0], c2p[1], 0)
+			d.P.DrawLine(c1p[0], c1p[1], 0, c2p[0], c2p[1], 0)
 		}
 	}
 }
+
+func (d *Design) drawDots(dots [][]float64) {}
