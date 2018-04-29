@@ -1,5 +1,7 @@
 # `linedesigns`
 
+<img src="assets/recttri.png" width="400" height="400" alt="hello">
+
 <a href="#how-to">TL;DR</a>
 
 In elementary school I was introduced to a craft that used equally spaced dots connected by straight lines to create images. Here's the earliest version of one of these that I did as a kid:
@@ -26,6 +28,8 @@ l := lines.New(0.1, 1000, 1000)
 l.Triangle(0, .9, -.9, -.9, .9, -.9, 50)
 l.Save("triangle.png")
 ```
+
+Thanks to [@tidwall](http://twitter.com/tidwall) for his work on [pinhole](https://github.com/tidwall/pinhole) as linedesigns is built on top of it.
 
 ### Output:
 
