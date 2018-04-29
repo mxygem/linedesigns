@@ -9,45 +9,41 @@ type Design struct {
 	LineWidth   float64
 	ImageWidth  int
 	ImageHeight int
+	P           *pinhole.Pinhole
 }
 
 // New ...
 func New(lineWidth float64, imageWidth, imageHeight int) *Design {
-	return &Design{LineWidth: lineWidth, ImageWidth: imageWidth, ImageHeight: imageHeight}
+	return &Design{LineWidth: lineWidth, ImageWidth: imageWidth, ImageHeight: imageHeight, P: pinhole.New()}
 }
 
 // Rectangle creates a lined rectangle
 func (d *Design) Rectangle(x1, y1, x2, y2, x3, y3, x4, y4, count float64) {
-	p := pinhole.New()
-	left := d.DottedLine(x1, y1, x2, y2, count)
-	bottom := d.DottedLine(x2, y2, x3, y3, count)
-	right := d.DottedLine(x3, y3, x4, y4, count)
-	top := d.DottedLine(x4, y4, x1, y1, count)
+	left := d.dottedLine(x1, y1, x2, y2, count)
+	bottom := d.dottedLine(x2, y2, x3, y3, count)
+	right := d.dottedLine(x3, y3, x4, y4, count)
+	top := d.dottedLine(x4, y4, x1, y1, count)
 
-	d.ConnectDots(left, bottom, p)
-	d.ConnectDots(bottom, right, p)
-	d.ConnectDots(right, top, p)
-	d.ConnectDots(top, left, p)
-
-	d.save(p)
+	d.connectDots(left, bottom, d.P)
+	d.connectDots(bottom, right, d.P)
+	d.connectDots(right, top, d.P)
+	d.connectDots(top, left, d.P)
 }
 
 // Triangle creates a lined triangle
 func (d *Design) Triangle(x1, y1, x2, y2, x3, y3, count float64) {
-	p := pinhole.New()
-	l1 := d.DottedLine(x1, y1, x2, y2, count)
-	l2 := d.DottedLine(x2, y2, x3, y3, count)
-	l3 := d.DottedLine(x3, y3, x1, y1, count)
+	l1 := d.dottedLine(x1, y1, x2, y2, count)
+	l2 := d.dottedLine(x2, y2, x3, y3, count)
+	l3 := d.dottedLine(x3, y3, x1, y1, count)
 
-	d.ConnectDots(l1, l2, p)
-	d.ConnectDots(l2, l3, p)
-	d.ConnectDots(l3, l1, p)
-
-	d.save(p)
+	d.connectDots(l1, l2, d.P)
+	d.connectDots(l2, l3, d.P)
+	d.connectDots(l3, l1, d.P)
 }
 
-func (d *Design) save(p *pinhole.Pinhole) {
+// Save saves
+func (d *Design) Save(fileName string) {
 	opts := *pinhole.DefaultImageOptions
 	opts.LineWidth = d.LineWidth
-	p.SavePNG("dotline.png", d.ImageWidth, d.ImageHeight, &opts)
+	d.P.SavePNG(fileName, d.ImageWidth, d.ImageHeight, &opts)
 }

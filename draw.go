@@ -6,8 +6,7 @@ import (
 	"github.com/tidwall/pinhole"
 )
 
-// DottedLine ...
-func (d *Design) DottedLine(x1, y1, x2, y2, count float64) [][]float64 {
+func (d *Design) dottedLine(x1, y1, x2, y2, count float64) [][]float64 {
 	points := [][]float64{}
 	i := 0.0
 	for i <= count {
@@ -20,8 +19,7 @@ func (d *Design) DottedLine(x1, y1, x2, y2, count float64) [][]float64 {
 	return points
 }
 
-// ConnectDots ...
-func (d *Design) ConnectDots(c1, c2 [][]float64, p *pinhole.Pinhole) {
+func (d *Design) connectDots(c1, c2 [][]float64, p *pinhole.Pinhole) {
 	fmt.Println(c1)
 	fmt.Println(c2)
 	for i, c1p := range c1 {
