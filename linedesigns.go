@@ -72,6 +72,18 @@ func (d *Design) TriangleDotted(x1, y1, x2, y2, x3, y3, count float64) {
 	d.drawDots(dots)
 }
 
+// Circle creates a lined circle
+func (d *Design) Circle(x, y, r, count, dotSize, offset float64, wrap bool) {
+	dots := d.dottedCircle(x, y, r, count)
+	d.connectDotStream(dots, int(offset), wrap)
+}
+
+// CircleDotted creates a dotted circle
+func (d *Design) CircleDotted(x, y, r, count, dotSize float64) {
+	dots := d.dottedCircle(x, y, r, count)
+	d.drawDots(dots)
+}
+
 // Save saves
 func (d *Design) Save(fileName string) {
 	opts := *pinhole.DefaultImageOptions
