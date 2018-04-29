@@ -12,10 +12,10 @@ The bulk of these types of works I've done have been with a rule/protractor, not
 
 While this project won't be able to do the image on the left, it would neat to get it to be able to output different shapes, allow for modification of line spacing, fill (pipe dream), etc.
 
+Thanks to [@tidwall](http://twitter.com/tidwall) for his work on [pinhole](https://github.com/tidwall/pinhole) as linedesigns is built on top of it.
+
 <img src="assets/02.jpg" width="300" height="400" alt="iloveyoumom">
 <img src="assets/07.jpg" width="300" height="400" alt="iloveyoumom">
-
-
 
 ## How To
 
@@ -28,8 +28,6 @@ l := lines.New(0.1, 1000, 1000)
 l.Triangle(0, .9, -.9, -.9, .9, -.9, 50)
 l.Save("triangle.png")
 ```
-
-Thanks to [@tidwall](http://twitter.com/tidwall) for his work on [pinhole](https://github.com/tidwall/pinhole) as linedesigns is built on top of it.
 
 ### Output:
 
