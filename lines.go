@@ -1,4 +1,4 @@
-package lines
+package linedesigns
 
 import (
 	"github.com/tidwall/pinhole"

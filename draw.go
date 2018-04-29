@@ -1,4 +1,4 @@
-package lines
+package linedesigns
 
 func (d *Design) dottedLine(x1, y1, x2, y2, count float64) [][]float64 {
 	points := [][]float64{}
