@@ -2,12 +2,13 @@ package linedesigns
 
 func (d *Design) dottedLine(x1, y1, x2, y2, count float64) [][]float64 {
 	points := [][]float64{}
-	i := 0.0
-	for i <= count {
+	for i := float64(0); i <= count; i++ {
+		// the equation below returns a point that equates to the ratio of the total line. i.e.:
+		// |---|---|---|---|---|---|---|
+		// 0       2                  100
 		x := x1 + (count-i)*(x2-x1)/count
 		y := y1 + (count-i)*(y2-y1)/count
 		points = append(points, []float64{x, y})
-		i++
 	}
 
 	return points

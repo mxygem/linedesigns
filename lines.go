@@ -22,6 +22,11 @@ func (d *Design) LineDotted(x1, y1, x2, y2, count float64) {
 	d.drawDots(d.dottedLine(x1, y1, x2, y2, count))
 }
 
+// Angle creates a lined angle
+func (d *Design) Angle(x1, y1, x2, y2, x3, y3, count float64) {
+	d.connectDots(d.dottedLine(x1, y1, x2, y2, count), d.dottedLine(x2, y2, x3, y3, count))
+}
+
 // Rectangle creates a lined rectangle
 func (d *Design) Rectangle(x1, y1, x2, y2, x3, y3, x4, y4, count float64) {
 	left := d.dottedLine(x1, y1, x2, y2, count)
