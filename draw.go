@@ -4,8 +4,7 @@ import (
 	"math"
 )
 
-func (d *Design) dottedLine(x1, y1, x2, y2, count float64) [][]float64 {
-	points := [][]float64{}
+func (d *Design) dottedLine(x1, y1, x2, y2, count float64) (points [][]float64) {
 	for i := float64(0); i <= count; i++ {
 		// the equation below returns a point that equates to the ratio of the total line. i.e.:
 		// |---|---|---|---|---|---|---|
@@ -14,23 +13,20 @@ func (d *Design) dottedLine(x1, y1, x2, y2, count float64) [][]float64 {
 		y := y1 + (count-i)*(y2-y1)/count
 		points = append(points, []float64{x, y})
 	}
-
-	return points
+	return
 }
 
-func (d *Design) dottedCircle(x, y, r, count float64) [][]float64 {
-	points := [][]float64{}
+func (d *Design) dottedCircle(x, y, r, count float64) (points [][]float64) {
 	for i := float64(0); i < count; i++ {
 		deg := i * 360.0 / count
 		X := x + (r * math.Cos(deg*(math.Pi/180)))
 		Y := y + (r * math.Sin(deg*(math.Pi/180)))
 		points = append(points, []float64{X, Y})
 	}
-
-	return points
+	return
 }
 
-func (d *Design) connectDots(c1, c2 [][]float64) {
+func (d *Design) connectPoints(c1, c2 [][]float64) {
 	for i, c1p := range c1 {
 		if i < len(c2)-1 {
 			c2p := c2[i+1]
@@ -39,7 +35,18 @@ func (d *Design) connectDots(c1, c2 [][]float64) {
 	}
 }
 
-func (d *Design) connectDotStream(points [][]float64, offset int, wrap bool) {
+func (d *Design) continuous(n [][]float64, count float64) (points [][]float64) {
+	for i, point := range n {
+		if i < len(n)-1 {
+			points = append(points, d.dottedLine(point[0], point[1], n[i+1][0], n[i+1][1], count)...)
+		} else {
+			points = append(points, d.dottedLine(point[0], point[1], n[0][0], n[0][1], count)...)
+		}
+	}
+	return
+}
+
+func (d *Design) connectPointStream(points [][]float64, offset int, wrap bool) {
 	if offset >= len(points) {
 		offset = len(points) - 1
 	}
@@ -55,8 +62,8 @@ func (d *Design) connectDotStream(points [][]float64, offset int, wrap bool) {
 	}
 }
 
-func (d *Design) drawDots(dots [][]float64) {
-	for _, pos := range dots {
-		d.P.DrawDot(pos[0], pos[1], 0, 0.02)
+func (d *Design) drawPoints(points [][]float64) {
+	for _, p := range points {
+		d.P.DrawDot(p[0], p[1], 0, 0.06)
 	}
 }
