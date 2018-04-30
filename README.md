@@ -1,8 +1,6 @@
 # `linedesigns`
-<img src="assets/trioct.png" width="300" height="300" alt="trioct">
-<img src="assets/mixed.png" width="300" height="300" alt="mixed">
-<img src="assets/freeform.png" width="300" height="300" alt="freeform">
-<img src="assets/recttri.png" width="300" height="300" alt="recttri">
+<img src="assets/trioct.png" width="300" height="300" alt="trioct"><img src="assets/mixed.png" width="300" height="300" alt="mixed">
+<img src="assets/freeform.png" width="300" height="300" alt="freeform"><img src="assets/recttri.png" width="300" height="300" alt="recttri">
 
 The `linedesigns` project is the digitizing of an arts craft I was taught in my elementary school days. This code is meant to help out in prototyping new designs faster as doing actual designs by hand can take hours.
 
