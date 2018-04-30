@@ -4,13 +4,6 @@
 
 The `linedesigns` project is the digitizing of an arts craft I was taught in my elementary school days. This code is meant to help out in prototyping new designs faster as doing actual designs by hand can take hours.
 
-`linedesigns` exposes a few different methods for different shapes/designs:
-- Line Dotted
-- Rectangle
-- Rectangle Dotted
-- Triangle
-- Triangle Dotted
-
 
 ## How To
 ```
