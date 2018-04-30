@@ -2,7 +2,7 @@
 <img src="assets/trioct.png" width="300" height="300" alt="trioct"><img src="assets/mixed.png" width="300" height="300" alt="mixed">
 <img src="assets/freeform.png" width="300" height="300" alt="freeform"><img src="assets/recttri.png" width="300" height="300" alt="recttri">
 
-The `linedesigns` project is the digitizing of an arts craft I was taught in my elementary school days. This code is meant to help out in prototyping new designs faster as doing actual designs by hand can take hours.
+`linedesigns` is the digitization of an arts craft I was taught in my elementary school days. It's meant to help prototype new designs quickly since doing these designs by hand can take hours.
 
 
 ## How To
@@ -13,7 +13,7 @@ $ go get -u github.com/jaysonesmith/linedesigns
 // new input: lineWidth, image width, image height
 l := lines.New(0.1, 1000, 1000)
 // input: x1, y1, x2, y2, x3, y3, line/dot frequency
-// creation goes counterclockwise starting from the f irst point given
+// creation goes counterclockwise starting from the first point given
 l.Triangle(0, .9, -.9, -.9, .9, -.9, 50)
 // save
 l.Save("triangle.png")
@@ -45,7 +45,7 @@ Some of my older drawings:
 
 ## Thanks
 
-Thanks to [@tidwall](http://twitter.com/tidwall) for his work on [pinhole](https://github.com/tidwall/pinhole) as linedesigns is built on top of it and this readme has be heavily influenced by [pinhole's](https://github.com/tidwall/pinhole)
+Thanks to [@tidwall](http://twitter.com/tidwall) for his work on [pinhole](https://github.com/tidwall/pinhole) as linedesigns is built on top of it and this readme has been heavily influenced by [pinhole's](https://github.com/tidwall/pinhole)
 
 ## Contact
 
