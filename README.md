@@ -1,5 +1,8 @@
 # `linedesigns`
-<img src="assets/recttri.png" width="400" height="400" alt="triangleinsiderectangle">
+<img src="assets/trioct.png" width="300" height="300" alt="trioct">
+<img src="assets/mixed.png" width="300" height="300" alt="mixed">
+<img src="assets/freeform.png" width="300" height="300" alt="freeform">
+<img src="assets/recttri.png" width="300" height="300" alt="recttri">
 
 The `linedesigns` project is the digitizing of an arts craft I was taught in my elementary school days. This code is meant to help out in prototyping new designs faster as doing actual designs by hand can take hours.
 
@@ -27,11 +30,15 @@ l.Save("triangle.png")
 
 ### Output:
 
-<img src="assets/triangle.png" width="400" height="400" alt="triangle">
+<img src="assets/triangle.png" width="300" height="300" alt="triangle">
+
+With an image editor, you can also have some fun with color!
+
+<img src="assets/aquax.png" width="300" height="300" alt="aquax">
 
 ## Background
 
-Line designs are essentially a series of points connected by straight or curved lines to create neat looking designs. To further add to these designs, the squares created by the crossing of lines can be filled in different patterns.
+Line designs are essentially a series of points connected by straight or curved lines to create neat looking designs. To further add to these designs, the squares created by the crossing of lines can be filled in different patterns. (as shown above)
 
 If I remember correctly, I was introduced to this type of art in 4th or 5th grade math class. Here's one of the earliest versions of one of these that I did as a kid:
 
