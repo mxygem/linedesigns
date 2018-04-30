@@ -41,8 +41,7 @@ The bulk of these types of works I've done have been with a rule/protractor, not
 
 Some of my older drawings:
 
-<img src="assets/02.jpg" width="300" height="400" alt="2002">
-<img src="assets/07.jpg" width="300" height="400" alt="2007">
+<img src="assets/02.jpg" width="300" height="400" alt="2002"><img src="assets/07.jpg" width="300" height="400" alt="2007">
 
 ## Thanks
 
