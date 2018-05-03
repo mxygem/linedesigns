@@ -64,6 +64,6 @@ func (d *Design) connectPointStream(points [][]float64, offset int, wrap bool) {
 
 func (d *Design) drawPoints(points [][]float64) {
 	for _, p := range points {
-		d.P.DrawDot(p[0], p[1], 0, 0.06)
+		d.P.DrawDot(p[0], p[1], 0, d.DotSize)
 	}
 }
