@@ -29,7 +29,7 @@ l := lines.New(0.1, 0.05, 1000, 1000)
 ### Design Creators
 `linedesign's` creators are split into two main groups based on their outputs:
 - **Dotted** - Outputs only dots at each point position instead of connecting each by lines. This output can be used if you'd like to connect the lines yourself for instance. Takes in N number of coordinates to create designs from, a count of how many points per line segment/design to create, and a dot size.
-- **Connected** - Outputs designs connected by lines. Currently the only method for line connection is via straight & black lines. These creators take in N amount of coordinates based on the shape to be created unless otherwise noted below.
+- **Lined** - Outputs designs connected by lines. Currently the only method for line connection is via straight & black lines. These creators take in N amount of coordinates based on the shape to be created unless otherwise noted below.
 
 #### Dotted Creators
 
@@ -53,7 +53,7 @@ l.AngleDotted(-.6, .6, 0, -.6, .6, .6, 25)
 
 TriangleDotted takes in three coordinates, a count, and outputs a dotted triangle.
 ```go
-l.AngleDotted(-.6, .6, 0, -.6, .6, .6, 25)
+l.TriangleDotted(0, .9, -.9, -.9, .9, -.9, 50)
 ```
 <img src="assets/triangledotted_ex.png" width="300" height="300" alt="triangledotted_ex">
 
@@ -61,13 +61,21 @@ l.AngleDotted(-.6, .6, 0, -.6, .6, .6, 25)
 
 RectangleDotted takes in four coordinates, a count, and outputs a dotted rectangle.
 ```go
-l.RectangleDotted(-.6, .6, -.6, -.6, .6, -.6, .6, .6, 25)
+l.RectangleDotted(-.8, .8, -.8, -.8, .8, -.8, .8, .8, 25)
 ```
 <img src="assets/rectangledotted_ex.png" width="300" height="300" alt="rectangledotted_ex">
 
+**CircleDotted**
+
+CircleDotted takes in a center point, a radius, a count, and outputs a dotted circle.
+```go
+l.CircleDotted(0, 0, .8, 100)
+```
+<img src="assets/circledotted_ex.png" width="300" height="300" alt="circledotted_ex">
+
 **FreeformDotted**
 
-FreeformDotted takes in a collection(slice of slices) of three or more coordinates, a count, and outputs a dotted whateveryoucreated. *Note: The two Freeform commands connect the last provided coordinate to the first.**
+FreeformDotted takes in a collection(slice of slices) of three or more coordinates, a count, and outputs a dotted whateveryoucreated. *Note: The two Freeform commands connect the last provided coordinate to the first!*
 ```go
 coords := [][]float64{
     []float64{-.9, .9},
@@ -82,15 +90,71 @@ l.FreeformDotted(coords, 50)
 ```
 <img src="assets/freeformdotted_ex.png" width="300" height="300" alt="freeformdotted_ex">
 
+#### Lined Creators
+
+**Angle**
+
+The simplest of the lined creators. It takes in three coordinates, a count, and outputs a single, lined angle.
+```go
+l.Angle(-.6, .6, 0, -.6, .6, .6, 25)
+```
+<img src="assets/angle_ex.png" width="300" height="300" alt="angle_ex">
+
+**Triangle**
+
+Triangle takes in three coordinates, a count, and outputs a lined triangle. Similar to `Angle`, except this connects each combo of line segments. (1 & 2, 2 & 3, 3 & 1)
+```go
+l.Triangle(0, .9, -.9, -.9, .9, -.9, 50)
+```
+<img src="assets/triangle_ex.png" width="300" height="300" alt="triangle_ex">
+
+**Rectangle**
+
+Rectangle takes in four coordinates, a count, and outputs a lined rectangle.
+```go
+l.Rectangle(-.6, .6, -.6, -.6, .6, -.6, .6, .6, 25)
+```
+<img src="assets/rectangle_ex.png" width="300" height="300" alt="rectangle_ex">
+
+**Circle**
+
+Circle takes in a center point, a radius, a count, an offset, a wrap bool, and outputs a lined circle.
+- Offset is a number that defines how many points `linedesign` will skip to connect two points with a line. This can have neat outputs based on what you input. 
+- Wrap tells `linedesign` whether to continue around through to make sure all points created are connected. Without it, depending on your offset value, you may not have all points connected which can also lead to other neat designs.
+
+*The below examples show the same parameters but with wrap on and off for each photo respectively.
+```go
+l.Circle(0, 0, .8, 100, 40, true)
+```
+<img src="assets/circle_ex.png" width="300" height="300" alt="circle_ex"><img src="assets/circle_nowrap_ex.png" width="300" height="300" alt="circle_nowrap_ex">
+
+**Freeform**
+
+Freeform takes in a collection(slice of slices) of three or more coordinates, a count, an offset, a wrap bool, and outputs a lined whateveryoucreated.
+```go
+coords := [][]float64{
+    []float64{-.9, .9},
+    []float64{-.2, .0},
+    []float64{-.9, -.9},
+    []float64{0, -.9},
+    []float64{0, 0},
+    []float64{.9, 0},
+    []float64{.9, .9},
+    []float64{-.9, .9},
+    []float64{-.2, .0},
+}
+l.Freeform(coords, 50, 51, false)
+```
+<img src="assets/freeform_ex.png" width="300" height="300" alt="freeform_ex">
+
 
 ---
+## Color
 
+Eventually, I plan to utilize Pinhole's color options and allow for the lines drawn to be other than black, but that is still yet to come. Additionally, I'd like to implement a way to automate the fill patterns below as well as others, but that'll be quite the challenge. (PRs welcomed!)
 
-<img src="assets/triangle.png" width="300" height="300" alt="triangle">
+<img src="assets/aquax.png" width="300" height="300" alt="aquax"><img src="assets/circle_colored_colorful.png" width="300" height="300" alt="circle_colored_colorful">
 
-With an image editor, you can also have some fun with color!
-
-<img src="assets/aquax.png" width="300" height="300" alt="aquax">
 
 ## Background
 
@@ -110,11 +174,11 @@ Some of my older drawings:
 
 ## Thanks
 
-Thanks to [@tidwall](http://twitter.com/tidwall) for his work on [pinhole](https://github.com/tidwall/pinhole) as linedesigns is built on top of it and this readme has been heavily influenced by [pinhole's](https://github.com/tidwall/pinhole)
+Thanks to [@tidwall](http://twitter.com/tidwall) for his work on [pinhole](https://github.com/tidwall/pinhole) as linedesigns is built on top of it and this readme has been heavily influenced by [pinhole's](https://github.com/tidwall/pinhole).
 
 ## Contact
 
-Jayson Smith [@thatengjayson](http://twitter.com/thatengjayson)
+Jayson Smith [@thatengjayson](http://twitter.com/thatengjayson) or open a [github issue.](https://github.com/jaysonesmith/linedesigns/issues)
 
 ## License
 
