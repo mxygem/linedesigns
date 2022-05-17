@@ -7,7 +7,7 @@
 ---
 ## Install
 ```
-$ go get -u github.com/jaysonesmith/linedesigns
+$ go get -u github.com/mxygem/linedesigns
 ```
 ---
 ## How To
@@ -178,7 +178,7 @@ Thanks to [@tidwall](http://twitter.com/tidwall) for his work on [pinhole](https
 
 ## Contact
 
-Jayson Smith [@thatengjayson](http://twitter.com/thatengjayson) or open a [github issue.](https://github.com/jaysonesmith/linedesigns/issues)
+Gemini Smith [@mxygem](http://twitter.com/mxygem) or open a [github issue.](https://github.com/mxygem/linedesigns/issues)
 
 ## License
 
